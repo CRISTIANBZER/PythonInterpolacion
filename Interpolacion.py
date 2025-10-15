@@ -119,7 +119,6 @@ class InterpolacionLagrange:
         colores = ['red', 'blue', 'green', 'purple']
         marcadores = ['o', 's', '^', 'D']
         
-        # Gráfica 1: Errores porcentuales
         for idx, grado in enumerate(grados):
             x_puntos, errores, _ = self.calcular_error_grado(grado)
             
@@ -144,7 +143,6 @@ class InterpolacionLagrange:
         ax1.legend()
         ax1.grid(True, alpha=0.3)
         
-        # Gráfica 2: Datos originales vs interpolados
         for idx, grado in enumerate(grados):
             x_puntos, _, y_interp = self.calcular_error_grado(grado)
             
@@ -268,7 +266,6 @@ class Regresion:
         print("ANÁLISIS DE REGRESIÓN")
         print("="*70)
         
-        # Regresión lineal
         a_lineal, b_lineal, y_pred_lineal, stats_lineal = self.regresion_lineal()
         print(f"\n{'─'*70}")
         print("REGRESIÓN LINEAL")
@@ -331,9 +328,9 @@ class Regresion:
 def buscar_archivo():
     """Busca el archivo datos.xlsx en diferentes ubicaciones"""
     # Obtener la carpeta de Documentos del usuario actual (universal)
-    home = os.path.expanduser("~")  # Obtiene la carpeta del usuario (ej: C:/Users/NombreUsuario)
-    documentos = os.path.join(home, "Documents")  # Para Windows en inglés
-    documentos_es = os.path.join(home, "Documentos")  # Para Windows en español
+    home = os.path.expanduser("~")  
+    documentos = os.path.join(home, "Documents")  
+    documentos_es = os.path.join(home, "Documentos")  
     
     rutas = [
         # Carpeta actual (donde está el script)
@@ -341,13 +338,13 @@ def buscar_archivo():
         "./datos.xls",
         "datos.xlsx",
         "datos.xls",
-        # Carpeta de Documentos (Windows inglés)
+      
         os.path.join(documentos, "datos.xlsx"),
         os.path.join(documentos, "datos.xls"),
-        # Carpeta de Documentos (Windows español)
+     
         os.path.join(documentos_es, "datos.xlsx"),
         os.path.join(documentos_es, "datos.xls"),
-        # Escritorio (por si acaso)
+        # Escritorio 
         os.path.join(home, "Desktop", "datos.xlsx"),
         os.path.join(home, "Escritorio", "datos.xlsx")
     ]
@@ -397,8 +394,8 @@ def main():
                 x_clean.append(float(x[i]))
                 y_clean.append(float(y[i]))
         
-        print(f"\n✓ Datos cargados: {len(x_clean)} puntos")
-        print("\nPrimeros 5 puntos:")
+        print(f"\nDatos cargados: {len(x_clean)} puntos")
+        print("\nPrimeros 5 puntos para ver si se leen correctamente:")
         for i in range(min(5, len(x_clean))):
             print(f"  Punto {i+1}: x={x_clean[i]:.2f}, y={y_clean[i]:.2f}")
         
@@ -436,4 +433,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
